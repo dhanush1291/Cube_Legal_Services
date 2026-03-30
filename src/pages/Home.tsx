@@ -121,7 +121,7 @@ const Home = () => (
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center px-4 sm:px-0">
           <Link to="/book" className="w-full sm:w-auto">
             <Button size="lg" className="w-full sm:w-auto px-8 sm:px-12 py-6 sm:py-9 text-base sm:text-xl font-bold bg-primary text-white hover:bg-primary/90 transition-all rounded-2xl shadow-2xl shadow-primary/20">
-              Book a Service
+              Get Started
             </Button>
           </Link>
           <a href={`https://wa.me/${siteConfig.whatsapp}`} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">

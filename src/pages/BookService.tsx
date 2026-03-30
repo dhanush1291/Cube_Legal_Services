@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { services } from "@/data/services";
 import { siteConfig } from "@/data/config";
 import { Button } from "@/components/ui/button";
@@ -13,15 +14,29 @@ const steps = [
 ];
 
 const BookService = () => {
+    const [searchParams] = useSearchParams();
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
         email: "",
-        service: "",
-        subService: "",
+        service: searchParams.get("service") || "",
+        subService: searchParams.get("subService") || "",
         description: "",
         urgency: "standard",
     });
+
+    useEffect(() => {
+        const service = searchParams.get("service");
+        const subService = searchParams.get("subService");
+        if (service || subService) {
+            setFormData(prev => ({
+                ...prev,
+                service: service || prev.service,
+                subService: subService || prev.subService
+            }));
+        }
+    }, [searchParams]);
+
     const [submitted, setSubmitted] = useState(false);
 
     const selectedService = services.find((s) => s.id === formData.service);

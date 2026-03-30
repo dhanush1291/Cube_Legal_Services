@@ -28,7 +28,7 @@ const ServiceDetail = () => {
                         <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 leading-tight">{service.name}</h1>
                         <p className="text-primary-foreground/70 text-lg md:text-xl leading-relaxed mb-10">{service.description}</p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <Link to="/book">
+                            <Link to={`/book?service=${service.id}`}>
                                 <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 px-10 py-7 text-lg font-bold rounded-xl shadow-xl shadow-secondary/20">
                                     Book This Service <ArrowRight className="ml-2 w-5 h-5" />
                                 </Button>
@@ -54,7 +54,7 @@ const ServiceDetail = () => {
                         {service.subServices.map((sub, i) => (
                             <Link
                                 key={sub}
-                                to="/book"
+                                to={`/book?service=${service.id}&subService=${encodeURIComponent(sub)}`}
                                 className="group flex items-center gap-4 p-5 rounded-xl border border-muted hover:border-secondary/40 hover:bg-secondary/5 transition-all animate-fade-in"
                                 style={{ animationDelay: `${i * 50}ms` }}
                             >
@@ -111,7 +111,7 @@ const ServiceDetail = () => {
                         Get your document professionally drafted and delivered securely. Book now or reach us on WhatsApp.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link to="/book">
+                        <Link to={`/book?service=${service.id}`}>
                             <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 py-7 text-lg font-bold rounded-xl">
                                 Book Service
                             </Button>
